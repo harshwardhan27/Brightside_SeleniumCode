@@ -136,8 +136,8 @@ public class firstClass{
 		firstClass myObj = new firstClass();
 		myObj.invokeBrowser();
 		myObj.sign_up();
-//		myObj.user_login();
-//		myObj.alreadyAccount();
-//		myObj.forgot_password();
+		myObj.user_login();
+		myObj.alreadyAccount();
+		myObj.forgot_password();
 	}
 }
