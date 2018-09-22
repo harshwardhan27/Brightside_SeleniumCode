@@ -11,11 +11,13 @@ public class firstClass{
 	String baseURL = "http://dev.angular.brightsidementoring.tudip.uk";
 	String signUpURL = "http://dev.angular.brightsidementoring.tudip.uk/sign-up?project_code=";
 	String feedsURL = "http://dev.angular.brightsidementoring.tudip.uk/feeds";
+	String termsConditionURL = "http://dev.angular.brightsidementoring.tudip.uk/terms";
+	String privacyPolicyURL = "http://dev.angular.brightsidementoring.tudip.uk/privacy";
 	String existSignUp = "http://dev.angular.brightsidementoring.tudip.uk/sign-in?project_code=";
 	String projectCode = "HCLOHR";
-	String newfirstName = "Allen";
-	String newlastName = "Hauna";
-	String newEmailId = "chinux.hauna+chinux@tudip.com";
+	String newfirstName = "Demo";
+	String newlastName = "User";
+	String newEmailId = "demo.email@tudip.com";
 	String newPassword = "tudip123";
 	String newPostCode = "AB99AB";
 	String newDate = "27";
@@ -30,7 +32,6 @@ public class firstClass{
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-			
 			driver.get(baseURL);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,10 +44,15 @@ public class firstClass{
 			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[1]/div/input")).sendKeys(newEmailId);
 			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[2]/div/input")).sendKeys(newPassword);
 			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[3]/input")).click();
-			System.out.println("User logged in successfully");
 			Thread.sleep(3000);
-			driver.get(baseURL + "/signout");
-			System.out.println("User successfuly logged out from their profile");
+			String currentFeedsURL = driver.getCurrentUrl();
+			if (currentFeedsURL.equalsIgnoreCase(feedsURL)) {
+				System.out.println("User logged in successfully");
+				driver.get(baseURL + "/signout");
+			} else {
+				System.out.println("User not able to login");
+				driver.quit();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -94,7 +100,32 @@ public class firstClass{
 			driver.findElement(By.xpath("/html/body/app/main/home/mentoringhome/div/div/div/div[1]/div/div[3]/ul/li[1]/a")).click();
 			driver.findElement(By.xpath("/html/body/app/main/project-code-sign-up/div/div/div/div/form/div[1]/input")).sendKeys(projectCode);
 			driver.findElement(By.xpath("/html/body/app/main/project-code-sign-up/div/div/div/div/form/div[2]/input")).click();
+			
+			//Terms and Conditions
+			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/p[3]/a[1]")).click();
 			Thread.sleep(3000);
+			String termsURL = driver.getCurrentUrl();
+			if (termsURL.equalsIgnoreCase(termsConditionURL)) {
+				System.out.println("Terms and Condition page successfully opened");
+				driver.navigate().back();
+			} else{
+				System.out.println("Terms and Condition page doesn't opened");
+				driver.quit();
+			}
+			
+			//Privacy and Policy
+			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/p[3]/a[2]")).click();
+			Thread.sleep(3000);
+			String policyURL = driver.getCurrentUrl();
+			if (policyURL.equalsIgnoreCase(privacyPolicyURL)) {
+				System.out.println("Privacy policy page successfully opened");
+				driver.navigate().back();
+			} else{
+				System.out.println("Privacy policy page doesn't opened");
+				driver.quit();
+			}
+			
+			//Already have an account
 			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/p[1]/a")).click();
 			Thread.sleep(3000);
 			String currentExistSignUpURL = driver.getCurrentUrl();
@@ -114,6 +145,7 @@ public class firstClass{
 			       }
 			 }else {
 				  System.out.print("Already have an account URL doesn't matched");
+				  driver.quit();
 			 	}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -127,6 +159,7 @@ public class firstClass{
 			driver.findElement(By.xpath("/html/body/app/main/new/div/div/div/div/form/div/div[1]/div/input")).sendKeys(newEmailId);
 			driver.findElement(By.xpath("/html/body/app/main/new/div/div/div/div/form/div/div[2]/input")).click();
 			System.out.println("Reset email has been sent to your email Id");
+			driver.get(baseURL);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
