@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 
 public class firstClass{
 	WebDriver driver;
@@ -26,7 +25,8 @@ public class firstClass{
 	
 	public void invokeBrowser(){
 		try {
-			System.setProperty("webdriver.chrome.driver","C:\\Users\\HARSH\\workspace\\MySeleniumCode\\src\\org\\brightside\\chromedriver.exe");
+//			System.setProperty("webdriver.chrome.driver","C:\\Users\\HARSH\\workspace\\MySeleniumCode\\src\\org\\brightside\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver","D:\\Selenium\\chromedriver.exe");
 			driver = new ChromeDriver();
 			driver.manage().deleteAllCookies();
 			driver.manage().window().maximize();
@@ -166,11 +166,11 @@ public class firstClass{
 	}
 	
 	public static void main(String[] args) throws InterruptedException{
-		firstClass myObj = new firstClass();
-		myObj.invokeBrowser();
-		myObj.sign_up();
-		myObj.user_login();
-		myObj.alreadyAccount();
-		myObj.forgot_password();
+		firstClass brightside = new firstClass();
+		brightside.invokeBrowser();
+		brightside.sign_up();
+		brightside.user_login();
+		brightside.alreadyAccount();
+		brightside.forgot_password();
 	}
 }
