@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class firstClass{
-	WebDriver driver;
+	public WebDriver driver;
 	String baseURL = "http://dev.angular.brightsidementoring.tudip.uk";
 	String signUpURL = "http://dev.angular.brightsidementoring.tudip.uk/sign-up?project_code=";
 	String feedsURL = "http://dev.angular.brightsidementoring.tudip.uk/feeds";
@@ -32,7 +32,7 @@ public class firstClass{
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-			driver.get(baseURL);
+			driver.get(baseURL);	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
