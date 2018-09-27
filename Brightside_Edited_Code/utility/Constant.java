@@ -1,7 +1,7 @@
 package utility;
 
 public class Constant {
-	
+  
 	//Constant URL
 	 public static final String baseURL = "http://dev.angular.brightsidementoring.tudip.uk";
 	 public static final String signUpURL = "http://dev.angular.brightsidementoring.tudip.uk/sign-up?project_code=";
@@ -14,7 +14,7 @@ public class Constant {
 	 public static final String projectCode = "HCLOHR";
 	 public static final String newfirstName = "Demo";
 	 public static final String newlastName = "User";
-	 public static final String newEmailId = "demo.email@tudip.com"; 
+	 public static final String newEmailId = "johnny.lamonica+email123456@tudip.com"; 
 	 public static final String newPassword = "tudip123";
 	 public static final String newPostCode = "AB99AB";
 	 public static final String newDate = "27";
@@ -24,5 +24,5 @@ public class Constant {
 	 //Messaging Constant Variables
 	 public static final String messagingURL = "http://dev.angular.brightsidementoring.tudip.uk/channels";
 	 public static final String testMessage = "Test Message";
-
+  
 }
