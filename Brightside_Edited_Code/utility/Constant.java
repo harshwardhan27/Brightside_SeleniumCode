@@ -14,7 +14,7 @@ public class Constant {
 	 public static final String projectCode = "HCLOHR";
 	 public static final String newfirstName = "Demo";
 	 public static final String newlastName = "User";
-	 public static final String newEmailId = "johnny.lamonica+email123456@tudip.com"; 
+	 public static final String newEmailId = "firstname.lastname@tudip.com"; 
 	 public static final String newPassword = "tudip123";
 	 public static final String newPostCode = "AB99AB";
 	 public static final String newDate = "27";

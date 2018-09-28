@@ -1,38 +1,15 @@
 package mentoring;
 import utility.Constant;
-
-import java.util.concurrent.TimeUnit;
-
+import brightsideDefault.homePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 
 
-public class messaging {
-  
-	
-	public WebDriver driver;
+public class messaging extends homePage{
 	  
-	  @BeforeTest
-	  public void invokeBrowser(){
-		try {
-			System.setProperty("webdriver.chrome.driver","C:\\Users\\HARSH\\workspace\\MySeleniumCode\\src\\org\\brightside\\chromedriver.exe");
-//			System.setProperty("webdriver.chrome.driver","D:\\Selenium\\chromedriver.exe");
-			driver = new ChromeDriver();
-			driver.manage().deleteAllCookies();
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-			driver.get(Constant.baseURL);	
-		} catch (Exception e) {
-			e.printStackTrace();
-		   }
-	  }
-	  
-	   @Test(priority=0)
+	   @Test(priority=4)
 	   public void mesaging() throws InterruptedException{
 		try {
 			driver.get(Constant.baseURL);
@@ -51,15 +28,22 @@ public class messaging {
 				WebElement textbox = driver.findElement(By.id("chat__input"));
 				textbox.sendKeys(Keys.SPACE);
 				driver.findElement(By.id("chat__send-message")).click();
-				System.out.println(Constant.testMessage + " " + "message is sent");
-				
+				if(driver.getPageSource().contains("Text Message")){
+					System.out.println(Constant.testMessage + " " + "message is sent");
+				} else{
+					System.out.println(Constant.testMessage + " " + "message is not sent");
+				    }
 			} else {
 			    System.out.print("Channels URL doesn't matched");
 			    driver.get(Constant.baseURL + "/signout");
-			    driver.close();
 			 	}
 		 } catch (Exception e) {
 			e.printStackTrace();
 			}
 	  }	
+	   
+	  @AfterClass
+	  public void quit() {
+		driver.quit();
+	  }
 }

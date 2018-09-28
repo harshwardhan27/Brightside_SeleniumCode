@@ -9,14 +9,14 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class homePage {
-  
+	
 	public WebDriver driver;
 	  
-	  @BeforeTest
+	  @BeforeClass
 	  public void invokeBrowser(){
 		try {
-			System.setProperty("webdriver.chrome.driver","C:\\Users\\HARSH\\workspace\\MySeleniumCode\\src\\org\\brightside\\chromedriver.exe");
-//			System.setProperty("webdriver.chrome.driver","D:\\Selenium\\chromedriver.exe");
+//			System.setProperty("webdriver.chrome.driver","C:\\Users\\HARSH\\workspace\\MySeleniumCode\\src\\org\\brightside\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver","D:\\Selenium\\chromedriver.exe");
 			driver = new ChromeDriver();
 			driver.manage().deleteAllCookies();
 			driver.manage().window().maximize();
@@ -28,7 +28,7 @@ public class homePage {
 		   }
 	  }
 	  
-	  @Test(priority=0)
+	  @Test(priority=3)
 	  public void user_login() throws InterruptedException{
 		try {
 			driver.findElement(By.xpath("/html/body/app/main/home/mentoringhome/div/div/div/div[1]/div/div[3]/ul/li[2]/a")).click();
@@ -43,7 +43,6 @@ public class homePage {
 				driver.get(Constant.baseURL + "/signout");
 			} else {
 				System.out.println("User not able to login");
-//				driver.close();
 			}
 		} catch (Exception e) {
 				e.printStackTrace();
@@ -77,18 +76,16 @@ public class homePage {
 						driver.get(Constant.baseURL + "/signout");
 			      }else {
 			         System.out.print(Constant.newfirstName + " " + "cannot be added");
-			         driver.close();
 			      	}
-		      }else {
+		    }else {
 		           System.out.print("Sign up with project code URL doesn't matched");
-		           driver.close();
-		   	}
+		   		}
 		} catch (Exception e) {
 			e.printStackTrace();
 			}
 	  }
 	  
-	  @Test(priority=2)
+	  @Test(priority=1)
 	  public void alreadyAccount() throws InterruptedException{
 		try {
 			driver.findElement(By.xpath("/html/body/app/main/home/mentoringhome/div/div/div/div[1]/div/div[3]/ul/li[1]/a")).click();
@@ -104,8 +101,7 @@ public class homePage {
 				driver.navigate().back();
 			} else{
 				System.out.println("Terms and Condition page doesn't opened");
-				driver.close();
-			}
+				}
 				
 			//Privacy and Policy
 			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/p[3]/a[2]")).click();
@@ -116,7 +112,6 @@ public class homePage {
 				driver.navigate().back();
 			} else{
 				System.out.println("Privacy policy page doesn't opened");
-				driver.close();
 			}
 			
 			//Already have an account
@@ -135,18 +130,16 @@ public class homePage {
 						driver.get(Constant.baseURL + "/signout");
 			      }else {
 			         System.out.print(Constant.newfirstName + " " + "cannot be added to project");
-			         driver.close();
 			       }
 			 }else {
 				  System.out.print("Already have an account URL doesn't matched");
-				  driver.close();
 			 	}
 		} catch (Exception e) {
 			e.printStackTrace();
 			}
 	  }
 	  
-	  @Test(priority=3)
+	  @Test(priority=2)
 	  public void forgot_password(){
 		try {
 			driver.findElement(By.xpath("/html/body/app/main/home/mentoringhome/div/div/div/div[1]/div/div[3]/ul/li[2]/a")).click();
@@ -158,10 +151,5 @@ public class homePage {
 		} catch (Exception e) {
 			e.printStackTrace();
 		   }
-	  }
-	  
-	  @AfterClass
-	  public void quit() {
-		driver.quit();
 	  }
 }
