@@ -37,13 +37,21 @@ public class homePage {
 			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[3]/input")).click();
 			Thread.sleep(3000);
 			String currentFeedsURL = driver.getCurrentUrl();
-			if (currentFeedsURL.equalsIgnoreCase(Constant.feedsURL)) {
-				Assert.assertTrue(currentFeedsURL.equalsIgnoreCase(Constant.feedsURL));
-				System.out.println("User logged in successfully");
-				driver.get(Constant.baseURL + "/signout");
-			} else {
-				System.out.println("User not able to login");
+			try {
+				Assert.assertEquals(currentFeedsURL,Constant.feedsURL);
+			} catch (AssertionError e) {
+			    System.out.println("URL does not matched");
+			    throw e;
 			}
+			System.out.println("URL matched and User logged in successfully");
+			driver.get(Constant.baseURL + "/signout");
+//			if (currentFeedsURL.equalsIgnoreCase(Constant.feedsURL)) {
+//			Assert.assertTrue(currentFeedsURL.equalsIgnoreCase(Constant.feedsURL));
+//			System.out.println("User logged in successfully");
+//			driver.get(Constant.baseURL + "/signout");
+//		} else {
+//			System.out.println("User not able to login");
+//			}
 		} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -57,29 +65,56 @@ public class homePage {
 			driver.findElement(By.xpath("/html/body/app/main/project-code-sign-up/div/div/div/div/form/div[2]/input")).click();
 			Thread.sleep(3000);
 			String currentURL = driver.getCurrentUrl();
-			if (currentURL.equalsIgnoreCase(Constant.signUpURL + Constant.projectCode)) {
-				System.out.println("Sign up with project code URL matched");
-				driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[1]/div[1]/input")).sendKeys(Constant.newfirstName);
-				driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[1]/div[2]/input")).sendKeys(Constant.newlastName);	
-				driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[2]/div/input")).sendKeys(Constant.newEmailId);
-				driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[3]/div/input")).sendKeys(Constant.newPassword);
-				driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[4]/div[1]/input")).sendKeys(Constant.newPostCode);
-				new Select(driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[4]/div[2]/div[1]/select"))).selectByVisibleText(Constant.newDate);
-				new Select(driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[4]/div[2]/div[2]/select"))).selectByVisibleText(Constant.newMonth);
-				new Select(driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[4]/div[2]/div[3]/select"))).selectByVisibleText(Constant.newYear);
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[5]/input")).click();
-				Thread.sleep(5000);
-				String currentFeedsURL = driver.getCurrentUrl();
-				if (currentFeedsURL.equalsIgnoreCase(Constant.feedsURL)) {
-						System.out.println(Constant.newfirstName + " " + "added successfully");
-						driver.get(Constant.baseURL + "/signout");
-			      }else {
-			         System.out.print(Constant.newfirstName + " " + "cannot be added");
-			      	}
-		    }else {
-		           System.out.print("Sign up with project code URL doesn't matched");
-		   		}
+			try {
+				Assert.assertEquals(currentURL,Constant.signUpURL + Constant.projectCode);
+			} catch (AssertionError e) {
+			    System.out.println("Sign up with project code URL doesn't matched");
+			    throw e;
+			}
+			System.out.println("Sign up with project code URL matched");
+			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[1]/div[1]/input")).sendKeys(Constant.newfirstName);
+			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[1]/div[2]/input")).sendKeys(Constant.newlastName);	
+			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[2]/div/input")).sendKeys(Constant.newEmailId);
+			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[3]/div/input")).sendKeys(Constant.newPassword);
+			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[4]/div[1]/input")).sendKeys(Constant.newPostCode);
+			new Select(driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[4]/div[2]/div[1]/select"))).selectByVisibleText(Constant.newDate);
+			new Select(driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[4]/div[2]/div[2]/select"))).selectByVisibleText(Constant.newMonth);
+			new Select(driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[4]/div[2]/div[3]/select"))).selectByVisibleText(Constant.newYear);
+			Thread.sleep(2000);
+			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[5]/input")).click();
+			Thread.sleep(5000);
+			String currentFeedsURL = driver.getCurrentUrl();
+			try {
+				Assert.assertEquals(currentFeedsURL,Constant.feedsURL);
+			} catch (AssertionError e) {
+				System.out.print(Constant.newfirstName + " " + "cannot be added");
+			    throw e;
+			}
+			System.out.println(Constant.newfirstName + " " + "added successfully");
+			driver.get(Constant.baseURL + "/signout");
+//			if (currentURL.equalsIgnoreCase(Constant.signUpURL + Constant.projectCode)) {
+//			System.out.println("Sign up with project code URL matched");
+//			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[1]/div[1]/input")).sendKeys(Constant.newfirstName);
+//			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[1]/div[2]/input")).sendKeys(Constant.newlastName);	
+//			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[2]/div/input")).sendKeys(Constant.newEmailId);
+//			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[3]/div/input")).sendKeys(Constant.newPassword);
+//			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[4]/div[1]/input")).sendKeys(Constant.newPostCode);
+//			new Select(driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[4]/div[2]/div[1]/select"))).selectByVisibleText(Constant.newDate);
+//			new Select(driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[4]/div[2]/div[2]/select"))).selectByVisibleText(Constant.newMonth);
+//			new Select(driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[4]/div[2]/div[3]/select"))).selectByVisibleText(Constant.newYear);
+//			Thread.sleep(2000);
+//			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/form/div/div[5]/input")).click();
+//			Thread.sleep(5000);
+//			String currentFeedsURL = driver.getCurrentUrl();
+//			if (currentFeedsURL.equalsIgnoreCase(Constant.feedsURL)) {
+//					System.out.println(Constant.newfirstName + " " + "added successfully");
+//					driver.get(Constant.baseURL + "/signout");
+//		      }else {
+//		         System.out.print(Constant.newfirstName + " " + "cannot be added");
+//		      	}
+//	    }else {
+//	           System.out.print("Sign up with project code URL doesn't matched");
+//	   		}
 		} catch (Exception e) {
 			e.printStackTrace();
 			}
@@ -118,22 +153,42 @@ public class homePage {
 			driver.findElement(By.xpath("/html/body/app/main/sign-up/div/div/div/div/p[1]/a")).click();
 			Thread.sleep(3000);
 			String currentExistSignUpURL = driver.getCurrentUrl();
-			if (currentExistSignUpURL.equalsIgnoreCase(Constant.existSignUp + Constant.projectCode)) {
-				System.out.println("Already have an account URL matched");
-				driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[1]/div/input")).sendKeys(Constant.newEmailId);
-				driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[2]/div/input")).sendKeys(Constant.newPassword);
-				driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[3]/input")).click();
-				Thread.sleep(5000);
-				String currentExistFeedsURL = driver.getCurrentUrl();
-				if (currentExistFeedsURL.equalsIgnoreCase(Constant.feedsURL)) {
-						System.out.println(Constant.newfirstName + " " + "added successfully to project");
-						driver.get(Constant.baseURL + "/signout");
-			      }else {
-			         System.out.print(Constant.newfirstName + " " + "cannot be added to project");
-			       }
-			 }else {
-				  System.out.print("Already have an account URL doesn't matched");
-			 	}
+			try {
+				Assert.assertEquals(currentExistSignUpURL,Constant.existSignUp + Constant.projectCode);
+			} catch (AssertionError e) {
+				System.out.print("Already have an account URL doesn't matched");
+			    throw e;
+			}
+			System.out.println("Already have an account URL matched");
+			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[1]/div/input")).sendKeys(Constant.newEmailId);
+			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[2]/div/input")).sendKeys(Constant.newPassword);
+			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[3]/input")).click();
+			Thread.sleep(5000);
+			String currentExistFeedsURL = driver.getCurrentUrl();
+			try {
+				Assert.assertEquals(currentExistFeedsURL,Constant.feedsURL);
+			} catch (AssertionError e) {
+				System.out.print(Constant.newfirstName + " " + "cannot be added to project");
+			    throw e;
+			}
+			System.out.println(Constant.newfirstName + " " + "added successfully to project");
+			driver.get(Constant.baseURL + "/signout");
+//			if (currentExistSignUpURL.equalsIgnoreCase(Constant.existSignUp + Constant.projectCode)) {
+//				System.out.println("Already have an account URL matched");
+//				driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[1]/div/input")).sendKeys(Constant.newEmailId);
+//				driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[2]/div/input")).sendKeys(Constant.newPassword);
+//				driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[3]/input")).click();
+//				Thread.sleep(5000);
+//				String currentExistFeedsURL = driver.getCurrentUrl();
+//				if (currentExistFeedsURL.equalsIgnoreCase(Constant.feedsURL)) {
+//						System.out.println(Constant.newfirstName + " " + "added successfully to project");
+//						driver.get(Constant.baseURL + "/signout");
+//			      }else {
+//			         System.out.print(Constant.newfirstName + " " + "cannot be added to project");
+//			       }
+//			 }else {
+//				  System.out.print("Already have an account URL doesn't matched");
+//			 	}
 		} catch (Exception e) {
 			e.printStackTrace();
 			}
