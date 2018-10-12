@@ -154,7 +154,7 @@ public class homePage {
 			Thread.sleep(3000);
 			String currentExistSignUpURL = driver.getCurrentUrl();
 			try {
-				Assert.assertEquals(currentExistSignUpURL,Constant.existSignUp + Constant.projectCode);
+				Assert.assertEquals(currentExistSignUpURL,Constant.existSignUpURL + Constant.projectCode);
 			} catch (AssertionError e) {
 				System.out.print("Already have an account URL doesn't matched");
 			    throw e;
