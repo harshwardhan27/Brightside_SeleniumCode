@@ -28,7 +28,7 @@ public class Constant {
 	 //MyAccount file path
 	 public static final String imagefilePath = "C:\\Users\\acer\\Desktop\\Harsh\\Testing images\\Brasilia1.jpeg";
 	 public static final String updateFirstName = "Frank";
-	 public static final String updateLastNamee = "Lawless";
+	 public static final String updateLastName = "Lawless";
 	 public static final String updateEmailId = "frank.lawless@tudip.com";
 	 public static final String updatePhoneNumber = "07412589630";
 	 public static final String updatePostCode = "AB99AB";

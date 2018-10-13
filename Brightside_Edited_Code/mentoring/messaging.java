@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 
 public class messaging extends homePage{
 	  
-	   @Test(priority=4)
+	   @Test(priority=0)
 	   public void mesaging() throws InterruptedException{
 		try {
 			driver.get(Constant.baseURL);

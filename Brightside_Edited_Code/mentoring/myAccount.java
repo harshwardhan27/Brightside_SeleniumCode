@@ -42,17 +42,57 @@ public class myAccount extends homePage{
 	}
 	
 	@Test(priority=1)
-	public void myAccoutValid() throws InterruptedException{
+	public void myAccoutUpdateDetails() throws InterruptedException{
+		//Step-1
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[1]/div/input")).clear();
+		try{
+			Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled());
+		}catch (AssertionError e){
+			System.out.println("First name field is cleared but update button remains enabled");
+		}
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[1]/div/input")).sendKeys(Constant.updateFirstName);
+		
+		//Step-2
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[2]/div/input")).clear();
-		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[2]/div/input")).sendKeys(Constant.updateLastNamee);
+		try{
+			Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled());
+		}catch (AssertionError e){
+			System.out.println("Last name field is cleared but update button remains enabled");
+		}
+		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[2]/div/input")).sendKeys(Constant.updateLastName);
+		
+		//Step-3
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[3]/div/input")).clear();
+		try{
+			Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled());
+		}catch (AssertionError e){
+			System.out.println("Email Id is cleared but update button remains enabled");
+		}
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[3]/div/input")).sendKeys(Constant.updateEmailId);
+		try{
+			Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled());
+		}catch (AssertionError e){
+			System.out.println("User enters invalid email");
+		}
+		
+		//Step-4
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[4]/div/input")).clear();
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[4]/div/input")).sendKeys(Constant.updatePhoneNumber);
+		
+		//Step-5
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[5]/div/input")).clear();
+		try{
+			Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled());
+		}catch (AssertionError e){
+			System.out.println("Post code field is cleared but update button remains enabled");
+		}
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[5]/div/input")).sendKeys(Constant.updatePostCode);
+		try{
+			Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled());
+		}catch (AssertionError e){
+			System.out.println("User enters invalid postcode");
+		}
+		
 		new Select(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[6]/div/select[1]"))).selectByVisibleText(Constant.updateDate);
 		new Select(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[6]/div/select[2]"))).selectByVisibleText(Constant.updateMonth);
 		new Select(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[6]/div/select[3]"))).selectByVisibleText(Constant.updateYear);
@@ -66,5 +106,5 @@ public class myAccount extends homePage{
 			System.out.println("User details doesn't updated successfully");
 		}
 		System.out.println("User details updated successfully");
-	}
+	}	
 }
