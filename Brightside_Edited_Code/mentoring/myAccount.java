@@ -40,7 +40,7 @@ public class myAccount extends homePage{
 		}
 		System.out.println("Image has been sent to the moderation");
 	}
-	
+
 	@Test(priority=1)
 	public void myAccoutUpdateDetails() throws InterruptedException{
 		//Step-1
@@ -105,6 +105,6 @@ public class myAccount extends homePage{
 		} catch (AssertionError e) {
 			System.out.println("User details doesn't updated successfully");
 		}
-		System.out.println("User details updated successfully");
+		System.out.println(Constant.successMessage);
 	}	
 }

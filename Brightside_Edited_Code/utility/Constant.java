@@ -25,7 +25,7 @@ public class Constant {
 	 public static final String messagingURL = "http://dev.angular.brightsidementoring.tudip.uk/channels";
 	 public static final String testMessage = "Test Message";
 	 
-	 //MyAccount file path
+	 //MyAccount Constant Variables
 	 public static final String imagefilePath = "C:\\Users\\acer\\Desktop\\Harsh\\Testing images\\Brasilia1.jpeg";
 	 public static final String updateFirstName = "Frank";
 	 public static final String updateLastName = "Lawless";
@@ -36,4 +36,9 @@ public class Constant {
 	 public static final String updateMonth = "October";
 	 public static final String updateYear = "1995";
 	 public static final String successMessage = "Account updated successfully!";
+	 
+	 //Assignments 
+	 public static final String assignmentFileName = "Brasilia1.jpeg";
+	 public static final String assignmentFilePath = "C:\\Users\\acer\\Desktop\\Harsh\\Testing images\\" + assignmentFileName;
+	 public static final String uploadConfirmMessage = "Assignment submitted successfully";
 }
