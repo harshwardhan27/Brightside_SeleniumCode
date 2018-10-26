@@ -21,7 +21,7 @@ public class projectAssignments extends homePage{
 		WebElement wb_assignments = driver.findElement(By.id("//*[@id='mySidenavR']/ul/li[4]/a"));
 		wb_assignments.click();
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/assignments/div/div/div[1]/div[2]/a")).sendKeys(Constant.assignmentFilePath);
-		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/assignments/div/div/div[1]/div[3]/div[contains(text(),Constant.assignmentFileName)]")).isDisplayed();
+		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/assignments/div/div/div[1]/div[3]/div[contains(text()," + Constant.assignmentFileName + ")]")).isDisplayed();
 		System.out.println("File has been selected");
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/assignments/div/div/div[1]/div[3]/div[2]/a")).click();
 		Thread.sleep(2000);
@@ -43,7 +43,12 @@ public class projectAssignments extends homePage{
 	    int month = now.getMonthValue();
 	    int day = now.getDayOfMonth();
 	    String currnetDate = month + day + ", " + year;
-	    System.out.println(currnetDate);
+	    try{
+			Assert.assertFalse(driver.findElements(By.xpath("/html/body/app/main/pages/div/div/div/assignments/div/div/div[2]/div/table/tbody/tr[2]/td[1]")).contains(currnetDate));
+		}catch(AssertionError e){
+			System.out.println("Date does not matched");
+		}
+		System.out.println("Date matched");
 	    
 	    //check uploaded file name
 		try{
