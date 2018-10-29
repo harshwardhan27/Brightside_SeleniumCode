@@ -1,6 +1,6 @@
 package mentoring;
 import utility.Constant;
-import brightsideDefault.homePage;
+import utility.webDriverInstance;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,11 +8,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class myAccount extends homePage{
+public class myAccount extends webDriverInstance{
 	
 	@Test(priority=0)
 	public void myAccountAvatar() throws InterruptedException{
-		driver.get(Constant.baseURL);
 		driver.findElement(By.linkText("Sign in")).click();
 		driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[1]/div/input")).sendKeys(Constant.newEmailId);
 		driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[2]/div/input")).sendKeys(Constant.newPassword);
@@ -107,4 +106,10 @@ public class myAccount extends homePage{
 		}
 		System.out.println(Constant.successMessage);
 	}	
+	
+	@AfterClass
+	  public void quit() {
+		  driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[9]/a")).click();
+		  driver.quit();
+	  }
 }

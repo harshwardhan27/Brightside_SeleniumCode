@@ -1,6 +1,6 @@
 package mentoring;
 import utility.Constant;
-import brightsideDefault.homePage;
+import utility.webDriverInstance;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,14 +8,17 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import java.time.LocalDateTime;  
 
-public class projectAssignments extends homePage{
+public class projectAssignments extends webDriverInstance{
 	
 	@Test(priority=0)
 	public void testUploadAssignments() throws InterruptedException{
 		
 		//User Login
-		myAccount obj_sign_in = new myAccount();
-		obj_sign_in.user_login();
+		driver.findElement(By.linkText("Sign in")).click();
+		driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[1]/div/input")).sendKeys(Constant.newEmailId);
+		driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[2]/div/input")).sendKeys(Constant.newPassword);
+		driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[3]/input")).click();
+		Thread.sleep(3000);
 		
 		//Upload Assignments
 		WebElement wb_assignments = driver.findElement(By.id("//*[@id='mySidenavR']/ul/li[4]/a"));
@@ -62,4 +65,10 @@ public class projectAssignments extends homePage{
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/assignments/div/div/div[2]/div/table/tbody/tr[2]/td[3]/a")).click();
 		System.out.println("Uploaded file has been downloaded");
 	}
+	
+	@AfterClass
+	  public void quit() {
+		  driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[9]/a")).click();
+		  driver.quit();
+	  }
 }

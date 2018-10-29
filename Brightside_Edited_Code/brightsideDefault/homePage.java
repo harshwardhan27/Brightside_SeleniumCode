@@ -1,42 +1,12 @@
 package brightsideDefault;
 import utility.Constant;
-import java.util.concurrent.TimeUnit;
+import utility.webDriverInstance;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class homePage {
-	
-	public WebDriver driver;
-	  
-	  @SuppressWarnings("unused")
-	  @BeforeClass
-	  public void invokeBrowser(){
-		try {
-			if (Constant.driverName == "chromeDriver"){
-				System.setProperty("webdriver.chrome.driver",Constant.driverPath);
-				driver = new ChromeDriver();
-			} else if (Constant.driverName == "IEDriverServer"){
-				System.setProperty("webdriver.ie.driver",Constant.driverPath);
-				driver = new InternetExplorerDriver();
-			} else {
-				driver = new FirefoxDriver();
-			}
-			//Default Properties
-			driver.manage().deleteAllCookies();
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-			driver.get(Constant.baseURL);	
-		} catch (Exception e) {
-			e.printStackTrace();
-		   }
-	  }
+public class homePage extends webDriverInstance {
 	  
 	  @Test(priority=3)
 	  public void user_login() throws InterruptedException{
@@ -216,5 +186,11 @@ public class homePage {
 		} catch (Exception e) {
 			e.printStackTrace();
 		   }
+	  }
+	  
+	  @AfterClass
+	  public void quit() {
+		  driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[9]/a")).click();
+		  driver.quit();
 	  }
 }
