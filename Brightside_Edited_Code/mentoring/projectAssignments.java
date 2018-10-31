@@ -54,8 +54,8 @@ public class projectAssignments extends webDriverInstance{
 		driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[9]/a")).click();
 	}
 	
-	@AfterClass
-	public void quit() {
-	  driver.quit();
-    }
+	@AfterMethod
+	public void browserClose(){
+		driver.close();
+	}
 }

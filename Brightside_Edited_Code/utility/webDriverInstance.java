@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 public class webDriverInstance {
 	public WebDriver driver;
 	@SuppressWarnings("unused")
-	@BeforeClass
+	@BeforeMethod
 	public void invokeBrowser(){
 		try {
 			if (Constant.driverName == "chromeDriver"){

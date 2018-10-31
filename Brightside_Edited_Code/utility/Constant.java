@@ -25,7 +25,7 @@ public class Constant {
 	public static final String projectCode = "YKOKWG";
 	public static final String newfirstName = "Test";
 	public static final String newlastName = "User";
-	public static final String newEmailId = "newton_test123@tudip.com"; 
+	public static final String newEmailId = "auli_ronkainen@tudip.com"; 
 	public static final String newPassword = "tudip123";
 	public static final String newPostCode = "AB99AB";
 	public static final String newDate = "27";
@@ -40,7 +40,7 @@ public class Constant {
 	public static final String imagefilePath = "C:\\Users\\acer\\Desktop\\Harsh\\Testing images\\Brasilia1.jpeg";
 	public static final String updateFirstName = "Frank";
 	public static final String updateLastName = "Lawless";
-	public static final String updateEmailId = "newton_testUser123@tudip.com";
+	public static final String updateEmailId = "auli_ronkainen+update@tudip.com";
 	public static final String updatePhoneNumber = "07412589630";
 	public static final String updatePostCode = "AB99AB";
 	public static final String updateDate = "16";
@@ -52,4 +52,7 @@ public class Constant {
 	public static final String assignmentFileName = "Brasilia1.jpeg";
 	public static final String assignmentFilePath = "C:\\Users\\acer\\Desktop\\Harsh\\Testing images\\" + assignmentFileName;
 	public static final String uploadConfirmMessage = "Assignment submitted successfully";
+
+	//Project Resources
+	public static final String externalMaterialTitle = "External Materials";
 }

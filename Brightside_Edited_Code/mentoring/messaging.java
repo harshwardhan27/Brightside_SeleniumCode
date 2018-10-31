@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 
 public class messaging extends webDriverInstance{
 	  
-	   @Test(priority=0)
+	   @Test(priority=4)
 	   private void mesaging() throws InterruptedException{
 		try {
 			driver.get(Constant.baseURL);
@@ -37,10 +37,10 @@ public class messaging extends webDriverInstance{
 			e.printStackTrace();
 			}
 	  }	
-	   
-	  @AfterClass
-	  public void quit() {
-		driver.quit();
+	  
+	  @AfterMethod
+	  public void browserClose(){
+		driver.close();
 	  }
 }
 

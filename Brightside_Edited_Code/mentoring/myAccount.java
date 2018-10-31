@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 
 public class myAccount extends webDriverInstance{
 	
-	@Test(priority=0)
+	@Test(priority=5)
 	private void myAccountAvatar() throws InterruptedException{
 		driver.findElement(By.linkText("Sign in")).click();
 		driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[1]/div/input")).sendKeys(Constant.newEmailId);
@@ -36,7 +36,7 @@ public class myAccount extends webDriverInstance{
 		driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[9]/a")).click();
 	}
 
-	@Test(priority=1)
+	@Test(priority=6)
 	private void myAccoutUpdateDetails() throws InterruptedException{
 		//Step-1
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[1]/div/input")).clear();
@@ -75,8 +75,8 @@ public class myAccount extends webDriverInstance{
 		driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[9]/a")).click();
 	}	
 	
-	@AfterClass
-	  public void quit() {
-		  driver.quit();
-	  }
+	@AfterMethod
+	public void browserClose(){
+		driver.close();
+	}
 }

@@ -8,23 +8,6 @@ import org.testng.annotations.*;
 
 public class homePage extends webDriverInstance {
 	  
-	  @Test(priority=3)
-	  private void user_login() throws InterruptedException{
-		try {
-			driver.findElement(By.xpath("/html/body/app/main/home/mentoringhome/div/div/div/div[1]/div/div[3]/ul/li[2]/a")).click();
-			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[1]/div/input")).sendKeys(Constant.newEmailId);
-			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[2]/div/input")).sendKeys(Constant.newPassword);
-			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[3]/input")).click();
-			Thread.sleep(3000);
-			String currentFeedsURL = driver.getCurrentUrl();
-			Assert.assertEquals(currentFeedsURL,Constant.feedsURL, "User not able to login");
-			System.out.println("User successfully logged in their profile");
-			driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[9]/a")).click();
-		} catch (Exception e) {
-				e.printStackTrace();
-			}
-	  }
-	  
 	  @Test(priority=0)
 	  private void sign_up() throws InterruptedException{
 		try {
@@ -117,8 +100,25 @@ public class homePage extends webDriverInstance {
 		   }
 	  }
 	  
-	  @AfterClass
-	  public void quit() {
-		  driver.quit();
+	  @Test(priority=3)
+	  private void user_login() throws InterruptedException{
+		try {
+			driver.findElement(By.xpath("/html/body/app/main/home/mentoringhome/div/div/div/div[1]/div/div[3]/ul/li[2]/a")).click();
+			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[1]/div/input")).sendKeys(Constant.newEmailId);
+			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[2]/div/input")).sendKeys(Constant.newPassword);
+			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[3]/input")).click();
+			Thread.sleep(3000);
+			String currentFeedsURL = driver.getCurrentUrl();
+			Assert.assertEquals(currentFeedsURL,Constant.feedsURL, "User not able to login");
+			System.out.println("User successfully logged in their profile");
+			driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[9]/a")).click();
+		} catch (Exception e) {
+				e.printStackTrace();
+			}
+	  }
+	  
+	  @AfterMethod
+	  public void browserClose(){
+		driver.close();
 	  }
 }
