@@ -22,10 +22,10 @@ public class Constant {
 	public static final String myAccountURL = "http://dev.angular.brightsidementoring.tudip.uk/users/718/edit";
 	
 	//Constant Default Variables
-	public static final String projectCode = "HCLOHR";
+	public static final String projectCode = "YKOKWG";
 	public static final String newfirstName = "Test";
 	public static final String newlastName = "User";
-	public static final String newEmailId = "issac.newton+testuser@tudip.com"; 
+	public static final String newEmailId = "newton_test123@tudip.com"; 
 	public static final String newPassword = "tudip123";
 	public static final String newPostCode = "AB99AB";
 	public static final String newDate = "27";
@@ -40,7 +40,7 @@ public class Constant {
 	public static final String imagefilePath = "C:\\Users\\acer\\Desktop\\Harsh\\Testing images\\Brasilia1.jpeg";
 	public static final String updateFirstName = "Frank";
 	public static final String updateLastName = "Lawless";
-	public static final String updateEmailId = "issac.newton+Ser@tudip.com";
+	public static final String updateEmailId = "newton_testUser123@tudip.com";
 	public static final String updatePhoneNumber = "07412589630";
 	public static final String updatePostCode = "AB99AB";
 	public static final String updateDate = "16";

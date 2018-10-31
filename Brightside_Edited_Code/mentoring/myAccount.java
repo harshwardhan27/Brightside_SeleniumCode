@@ -11,7 +11,7 @@ import org.testng.annotations.*;
 public class myAccount extends webDriverInstance{
 	
 	@Test(priority=0)
-	public void myAccountAvatar() throws InterruptedException{
+	private void myAccountAvatar() throws InterruptedException{
 		driver.findElement(By.linkText("Sign in")).click();
 		driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[1]/div/input")).sendKeys(Constant.newEmailId);
 		driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[2]/div/input")).sendKeys(Constant.newPassword);
@@ -20,13 +20,8 @@ public class myAccount extends webDriverInstance{
 		driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[2]/a")).click();
 		Thread.sleep(3000);
 		String currentAccountURL = driver.getCurrentUrl();
-		try {
-			Assert.assertEquals(currentAccountURL,Constant.myAccountURL);
-		} catch (AssertionError e) {
-			System.out.print("Already have an account URL doesn't matched");
-		    throw e;
-		}
-		System.out.println("My Account URL matched");
+		Assert.assertEquals(currentAccountURL,Constant.myAccountURL, "Already have an account URL doesn't matched");
+		System.out.println("Already have an account URL matched");
 		WebElement previousImg = driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/div/div[2]/img"));
 		String previousAvatar = previousImg.getAttribute("src");
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/div/div[2]/span/i")).sendKeys(Constant.imagefilePath);
@@ -38,41 +33,26 @@ public class myAccount extends webDriverInstance{
 			System.out.print("Image directly uploaded to their account");
 		}
 		System.out.println("Image has been sent to the moderation");
+		driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[9]/a")).click();
 	}
 
 	@Test(priority=1)
-	public void myAccoutUpdateDetails() throws InterruptedException{
+	private void myAccoutUpdateDetails() throws InterruptedException{
 		//Step-1
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[1]/div/input")).clear();
-		try{
-			Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled());
-		}catch (AssertionError e){
-			System.out.println("First name field is cleared but update button remains enabled");
-		}
+		Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled(), "First name field is cleared but update button remains enabled");
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[1]/div/input")).sendKeys(Constant.updateFirstName);
 		
 		//Step-2
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[2]/div/input")).clear();
-		try{
-			Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled());
-		}catch (AssertionError e){
-			System.out.println("Last name field is cleared but update button remains enabled");
-		}
+		Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled(), "Last name field is cleared but update button remains enabled");
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[2]/div/input")).sendKeys(Constant.updateLastName);
 		
 		//Step-3
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[3]/div/input")).clear();
-		try{
-			Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled());
-		}catch (AssertionError e){
-			System.out.println("Email Id is cleared but update button remains enabled");
-		}
+		Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled(), "Email Id is cleared but update button remains enabled");
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[3]/div/input")).sendKeys(Constant.updateEmailId);
-		try{
-			Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled());
-		}catch (AssertionError e){
-			System.out.println("User enters invalid email");
-		}
+		Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled(), "User enters invalid email");
 		
 		//Step-4
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[4]/div/input")).clear();
@@ -80,17 +60,9 @@ public class myAccount extends webDriverInstance{
 		
 		//Step-5
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[5]/div/input")).clear();
-		try{
-			Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled());
-		}catch (AssertionError e){
-			System.out.println("Post code field is cleared but update button remains enabled");
-		}
+		Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled(), "Post code field is cleared but update button remains enabled");
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[5]/div/input")).sendKeys(Constant.updatePostCode);
-		try{
-			Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled());
-		}catch (AssertionError e){
-			System.out.println("User enters invalid postcode");
-		}
+		Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled(), "User enters invalid postcode");
 		
 		new Select(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[6]/div/select[1]"))).selectByVisibleText(Constant.updateDate);
 		new Select(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[6]/div/select[2]"))).selectByVisibleText(Constant.updateMonth);
@@ -99,17 +71,12 @@ public class myAccount extends webDriverInstance{
 		Thread.sleep(2000);
 		Alert confirmMessage = driver.switchTo().alert();
 		String currentsuccessMessage = confirmMessage.getText();
-		try{
-			Assert.assertEquals(currentsuccessMessage,Constant.successMessage);
-		} catch (AssertionError e) {
-			System.out.println("User details doesn't updated successfully");
-		}
-		System.out.println(Constant.successMessage);
+		Assert.assertEquals(currentsuccessMessage,Constant.successMessage, "User details doesn't updated successfully");
+		driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[9]/a")).click();
 	}	
 	
 	@AfterClass
 	  public void quit() {
-		  driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[9]/a")).click();
 		  driver.quit();
 	  }
 }
