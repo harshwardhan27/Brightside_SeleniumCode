@@ -7,6 +7,7 @@
 			<class name="mentoring.messaging"></class>
 			<class name="mentoring.myAccount"></class>
 			<class name="mentoring.projectAssignments"></class>
+			<class name="mentoring.projectResources"></class>
 		</classes>
 	</test>
 </suite>
