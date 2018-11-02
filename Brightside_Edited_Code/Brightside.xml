@@ -3,10 +3,10 @@
 <suite name = "Brightside_Test_Run">
 	<test name = "FunctionalTesting">
 		<classes>
-			<class name="brightsideDefault.homePage"></class>
-			<class name="mentoring.messaging"></class>
-			<class name="mentoring.myAccount"></class>
-			<class name="mentoring.projectAssignments"></class>
+			<!--<class name="brightsideDefault.homePage"></class>-->
+			<!--<class name="mentoring.messaging"></class>-->
+			<!--<class name="mentoring.myAccount"></class>-->
+			<!--<class name="mentoring.projectAssignments"></class>-->
 			<class name="mentoring.projectResources"></class>
 		</classes>
 	</test>

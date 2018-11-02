@@ -79,7 +79,7 @@ public class homePage extends webDriverInstance {
 			Thread.sleep(5000);
 			String currentExistFeedsURL = driver.getCurrentUrl();
 			Assert.assertEquals(currentExistFeedsURL,Constant.feedsURL, Constant.newfirstName + " cannot be added to project");
-			System.out.println(Constant.newfirstName + " cannot be added to project");
+			System.out.println(Constant.newfirstName + " successfully added to project");
 			driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[9]/a")).click();
 		} catch (Exception e) {
 			e.printStackTrace();
