@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 public class projectAssignments extends webDriverInstance{
 	
-	@Test(priority=0)
+	@Test(priority=7)
 	private void testUploadAssignments() throws InterruptedException{
 		try{
 			//User Login
@@ -43,7 +43,7 @@ public class projectAssignments extends webDriverInstance{
 				}
 	}	
 	
-	@Test(priority=1)
+	@Test(priority=8)
 	private void checkUploadFileName() throws InterruptedException{
 		try{
 			//check uploaded date

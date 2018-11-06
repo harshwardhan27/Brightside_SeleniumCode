@@ -4,8 +4,8 @@ public class Constant {
 	
 //  Chrome Driver name and path
 	public static final String driverName = "chromeDriver";
-	public static final String driverPath = "D:\\Selenium\\chromedriver.exe";
-//	public static final String driverPath = "C:\\Users\\HARSH\\workspace\\MySeleniumCode\\src\\org\\brightside\\chromedriver.exe";
+//	public static final String driverPath = "D:\\Selenium\\chromedriver.exe";
+	public static final String driverPath = "C:\\Users\\HARSH\\workspace\\MySeleniumCode\\src\\org\\brightside\\chromedriver.exe";
 
 //  IE Driver name and Path
 //	public static final String driverName = "IEDriverServer";
@@ -22,6 +22,9 @@ public class Constant {
 	public static final String myAccountURL = "http://dev.angular.brightsidementoring.tudip.uk/users/718/edit";
 	public static final String myAssignmentURL = "http://dev.angular.brightsidementoring.tudip.uk/assignments";
 	public static final String myResourcesURL = "http://dev.angular.brightsidementoring.tudip.uk/project_resources";
+	public static final String myAskGraduateURL = "http://dev.angular.brightsidementoring.tudip.uk/ask_graduate";
+	public static final String myGraduateURL = "http://dev.angular.brightsidementoring.tudip.uk/graduates";
+	public static final String myCommunitiesURL = "http://dev.angular.brightsidementoring.tudip.uk/communities";
 	
 	//Constant Default Variables
 	public static final String projectCode = "YKOKWG";
@@ -57,4 +60,8 @@ public class Constant {
 
 	//Project Resources
 	public static final String externalMaterialTitle = "External Materials";
+
+	//Ask the Graduates
+	public static final String myQuestionMessage = "What is testing";
+	public static final String successSentMessage = "Question submitted successfully";
 }

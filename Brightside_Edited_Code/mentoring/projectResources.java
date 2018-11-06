@@ -10,7 +10,7 @@ import utility.webDriverInstance;
 
 public class projectResources extends webDriverInstance{
 	
-	@Test(priority=0)
+	@Test(priority=9)
 	public void assignedExternalMaterils() throws InterruptedException{
 		try {
 			//User Login
