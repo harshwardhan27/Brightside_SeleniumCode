@@ -25,6 +25,7 @@ public class Constant {
 	public static final String myAskGraduateURL = "http://dev.angular.brightsidementoring.tudip.uk/ask_graduate";
 	public static final String myGraduateURL = "http://dev.angular.brightsidementoring.tudip.uk/graduates";
 	public static final String myCommunitiesURL = "http://dev.angular.brightsidementoring.tudip.uk/communities";
+	public static final String myAddThreadURL = "http://dev.angular.brightsidementoring.tudip.uk/add-thread";
 	
 	//Constant Default Variables
 	public static final String projectCode = "YKOKWG";
@@ -64,4 +65,10 @@ public class Constant {
 	//Ask the Graduates
 	public static final String myQuestionMessage = "What is testing";
 	public static final String successSentMessage = "Question submitted successfully";
+	
+	//Project Communities
+	public static final String topicName = "History";
+	public static final String threadName = "Demo Thread";
+	public static final String threadDescription = "Demo Thread Description";
+	public static final String successAddThreadMessage = "Thread added successfully";
 }

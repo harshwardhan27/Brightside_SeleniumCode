@@ -8,6 +8,8 @@
 			<class name="mentoring.myAccount"></class>
 			<class name="mentoring.projectAssignments"></class>
 			<class name="mentoring.projectResources"></class>
+			<class name="mentoring.askTheGraduate"></class>
+			<class name="mentoring.projectCommunities"></class>
 		</classes>
 	</test>
 </suite>

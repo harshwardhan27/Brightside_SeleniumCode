@@ -37,7 +37,7 @@ public class projectAssignments extends webDriverInstance{
 			Alert uploadingMessage = driver.switchTo().alert();
 			String currentUploadConfirmMessage = uploadingMessage.getText();
 			Assert.assertEquals(currentUploadConfirmMessage,Constant.uploadConfirmMessage, "User details doesn't updated successfully");
-			System.out.println(Constant.uploadConfirmMessage);
+			System.out.println(currentUploadConfirmMessage);
 		 } catch (Exception e) {
 				e.printStackTrace();
 				}
