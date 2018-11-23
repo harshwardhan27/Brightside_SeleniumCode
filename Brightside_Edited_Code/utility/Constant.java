@@ -4,8 +4,8 @@ public class Constant {
 	
 //  Chrome Driver name and path
 	public static final String driverName = "chromeDriver";
-//	public static final String driverPath = "D:\\Selenium\\chromedriver.exe";
-	public static final String driverPath = "C:\\Users\\HARSH\\workspace\\MySeleniumCode\\src\\org\\brightside\\chromedriver.exe";
+	public static final String driverPath = "D:\\Selenium\\chromedriver.exe";
+//	public static final String driverPath = "C:\\Users\\HARSH\\workspace\\MySeleniumCode\\src\\org\\brightside\\chromedriver.exe";
 
 //  IE Driver name and Path
 //	public static final String driverName = "IEDriverServer";
