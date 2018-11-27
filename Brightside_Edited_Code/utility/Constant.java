@@ -71,4 +71,21 @@ public class Constant {
 	public static final String threadName = "Demo Thread";
 	public static final String threadDescription = "Demo Thread Description";
 	public static final String successAddThreadMessage = "Thread added successfully";
+	
+	//Admin URL
+	public static final String adminURL = "http://dev.angular.brightsideadmin.tudip.uk/projects";
+	public static final String partnerURL = "http://dev.angular.brightsideadmin.tudip.uk/partners";
+	public static final String createPartnerURL = "http://dev.angular.brightsideadmin.tudip.uk/partners/new";
+	
+	//Partner Variables
+	public static final String newPartnerName = "Test Partner";
+	public static final String newPartnerDomain = "";
+	public static final String newPartnerCommunityDomain = "";
+	public static final String newPartnerTagline = "";
+	public static final String newPartnerInvitationName = "";
+	public static final String newAboutPartner = "";
+	public static final String newPartnerPrimaryColor = "";
+	public static final String newPartnerSecondaryColor = "";
+	public static final String logoFilePath = "";
+	public static final String backgroundImageFilePath = "";
 }

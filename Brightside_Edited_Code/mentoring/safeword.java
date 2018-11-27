@@ -1,5 +1,4 @@
 package mentoring;
-import org.openqa.selenium.By;
 import org.openqa.selenium.*;
 import utility.webDriverInstance;
 
@@ -20,79 +19,79 @@ public class safeword extends webDriverInstance{
 	    {
 		    WebElement textbox = driver.findElement(By.id("chat__input"));
 		    
-		  //scenario 1: 
+		  //Scenario 1: 
 		    textbox.sendKeys(safeword_list[n]);
 		    textbox.sendKeys(Keys.SPACE);
 		    driver.findElement(By.id("chat__send-message")).click();
 		    Thread.sleep(2000);
 		    
-		  //scenario 2:
+		  //Scenario 2:
 		    textbox.sendKeys("africoon " + safeword_list[n]);
 		    textbox.sendKeys(Keys.SPACE);
 		    driver.findElement(By.id("chat__send-message")).click();
 		    Thread.sleep(2000);
 		    
-		  //scenario 3:
+		  //Scenario 3:
 		    textbox.sendKeys("africoon" + safeword_list[n]);
 		    textbox.sendKeys(Keys.SPACE);
 		    driver.findElement(By.id("chat__send-message")).click();
 		    Thread.sleep(2000);
 		    
-		  //scenario 4:
+		  //Scenario 4:
 		    textbox.sendKeys(safeword_list[n] + " africoon");
 		    textbox.sendKeys(Keys.SPACE);
 		    driver.findElement(By.id("chat__send-message")).click();
 		    Thread.sleep(2000);
 		    
-		  //scenario 5:
+		  //Scenario 5:
 		    textbox.sendKeys(safeword_list[n] + "africoon");
 		    textbox.sendKeys(Keys.SPACE);
 		    driver.findElement(By.id("chat__send-message")).click();
 		    Thread.sleep(2000);
 		    
-		  //scenario 6:
+		  //Scenario 6:
 		    textbox.sendKeys("africoon " + safeword_list[n] + " demo");
 		    textbox.sendKeys(Keys.SPACE);
 		    driver.findElement(By.id("chat__send-message")).click();
 		    Thread.sleep(2000);
 		    
-		  //scenario 7:
+		  //Scenario 7:
 		    textbox.sendKeys("africoon" + safeword_list[n] + " demo");
 		    textbox.sendKeys(Keys.SPACE);
 		    driver.findElement(By.id("chat__send-message")).click();
 		    Thread.sleep(2000);
 		    
-		  //scenario 8:
+		  //Scenario 8:
 		    textbox.sendKeys("africoon" + safeword_list[n] + "demo");
 		    textbox.sendKeys(Keys.SPACE);
 		    driver.findElement(By.id("chat__send-message")).click();
 		    Thread.sleep(2000);
 		    
-		  //scenario 9:
+		  //Scenario 9:
 		    textbox.sendKeys("https://www.google.com " + safeword_list[n]);
 		    textbox.sendKeys(Keys.SPACE);
 		    driver.findElement(By.id("chat__send-message")).click();
 		    Thread.sleep(2000);
 		    
-		  //scenario 10:
+		  //Scenario 10:
 		    textbox.sendKeys("https://www.google.com" + safeword_list[n]);
 		    textbox.sendKeys(Keys.SPACE);
 		    driver.findElement(By.id("chat__send-message")).click();
 		    Thread.sleep(2000);
 		    
-		  //scenario 11:
+		  //Scenario 11:
 		    textbox.sendKeys("https://www.google.com " + safeword_list[n] + "demo");
 		    textbox.sendKeys(Keys.SPACE);
 		    driver.findElement(By.id("chat__send-message")).click();
 		    Thread.sleep(2000);
 		    
-		  //scenario 12:
+		  //Scenario 12:
 		    textbox.sendKeys("https://www.google.com" + safeword_list[n] + "demo");
 		    textbox.sendKeys(Keys.SPACE);
 		    driver.findElement(By.id("chat__send-message")).click();
 		    Thread.sleep(2000);
 		    
-		  //scenario 13:
+		  //Scenario 13:
 		    textbox.sendKeys("https://www.google.com" + safeword_list[n] + " demo");
 		    textbox.sendKeys(Keys.SPACE);
 		    driver.findElement(By.id("chat__send-message")).click();
