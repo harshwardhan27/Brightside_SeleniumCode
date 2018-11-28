@@ -1,17 +1,14 @@
 package mentoring;
 import org.openqa.selenium.*;
-import utility.webDriverInstance;
+import utility.*;
 
 public class safeword extends webDriverInstance{
 	
 	public void safeword_data() throws InterruptedException{
 	
-		driver.get("http://dev.angular.brightsidementoring.tudip.uk");
-	    driver.findElement(By.linkText("Sign in")).click();
-	    driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[1]/div/input")).sendKeys("mentee.test@tudip.com");
-	    driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[2]/div/input")).sendKeys("tudip123");
-	    driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[3]/input")).click();
-	    Thread.sleep(3000);
+		//User Login
+		defaultLogin.user_login(Constant.newEmailId, Constant.newPassword);
+		
 	    driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/feeds/div/div[1]/div/div[1]/a")).click();
 	    
 	    String safeword_list[]={"Analyse","Analysed","Analysing","Analyze","Analyzing","Analyst","Analysts","Aston","Astronomy","Astronomical","Astrological","Black","Butterfly","Butterflies","Button","Buttons","Callum","Cocker","Cracked","Cumbria","Cumbrian","Cumulative","Cumulation","Deadline","Deadlines","Dickens","Hundred","Hundreds","Instance","Instances","Instant","Install","Installments","Installments","Japan","Japanese","Maxillofacial","Maximum","Method","Methods","Methodology","Methodologies","Methodological","Mongolia","Mongolian","Muffin","Muffins","Nadia","Nazihah","Pakistan","Pakistani","Paint","Paints","Painter","Painters","Painting","Paintings","Pool","Pools","Pooling","Poor","Poorer","Poorest","Punchy","Punchier","Space","Spacing","Tested","Tester","Textbook","Textbooks","Titanic","Title","Titles","Titling","Vague","Vaguely","Vagueness","Virginia"};

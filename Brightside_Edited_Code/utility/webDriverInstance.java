@@ -7,7 +7,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.*;
 
 public class webDriverInstance {
-	public WebDriver driver;
+	public static WebDriver driver;
 	@SuppressWarnings("unused")
 	@BeforeMethod
 	public void invokeBrowser(){

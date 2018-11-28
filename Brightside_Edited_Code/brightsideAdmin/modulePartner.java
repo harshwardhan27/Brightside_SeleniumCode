@@ -1,18 +1,16 @@
 package brightsideAdmin;
 import org.openqa.selenium.*;
 import org.testng.Assert;
-import utility.Constant;
-import utility.webDriverInstance;
+import utility.*;
 
 public class modulePartner extends webDriverInstance{
 	
-	//Method: Create Partner
+	//Method 1: Create Partner
 	public void create_partner() throws InterruptedException{
-		driver.findElement(By.xpath("/html/body/app/main/home/mentoringhome/div/div/div/div[1]/div/div[3]/ul/li[2]/a")).click();
-		driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[1]/div/input")).sendKeys(Constant.newEmailId);
-		driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[2]/div/input")).sendKeys(Constant.newPassword);
-		driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[3]/input")).click();
-		Thread.sleep(3000);
+		
+		//Coordinator Login
+		defaultLogin.admin_login(Constant.newEmailId, Constant.newPassword);
+		
 		//Redirection to Admin Dashboard
 		driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[5]/a")).click();
 		Thread.sleep(5000);
@@ -27,7 +25,7 @@ public class modulePartner extends webDriverInstance{
 		Assert.assertEquals(curentPartnerURL,Constant.partnerURL, "Partner URL doesn't matched");
 		System.out.println("Partner URL matched");
 		
-		//Create Partner
+		//Fill create partner fields
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-partners/div/div[2]/div[1]/a")).click();
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-edit-partner/div/form/div[1]/div[1]/div[1]/input")).sendKeys(Constant.newPartnerName);
 		driver.findElement(By.xpath("")).sendKeys(Constant.newPartnerDomain);
@@ -53,11 +51,33 @@ public class modulePartner extends webDriverInstance{
 		//To enable Ask the Graduate
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-edit-partner/div/form/div[3]/div[2]/div[6]")).click();
 		
+		//Click Submit
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-edit-partner/div/form/div[4]/input")).click();
 		
 		//check partner title
-		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-manage-partner/div/div[2]/div/div/app-partner-details/div/div[1]/div[2]/h4[contains(text()," + Constant.newPartnerName + ")]")).isDisplayed();
-		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-manage-partner/div/div[2]/div/div/app-partner-details/div/div[1]/div[2]/div[contains(text()," + Constant.newPartnerTagline + ")]")).isDisplayed();
-		System.out.println("Partner Created Successfully");
+		Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-manage-partner/div/div[2]/div/div/app-partner-details/div/div[1]/div[2]/h4[contains(text()," + Constant.newPartnerName + ")]")).isDisplayed(), "Partner Title doesn't matched");
+		Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-manage-partner/div/div[2]/div/div/app-partner-details/div/div[1]/div[2]/div[contains(text()," + Constant.newPartnerTagline + ")]")).isDisplayed(), "Partner Description doesn't matched");		
+		Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-manage-partner/div/div[2]/div/div/nav/ul/li[2]")).isDisplayed(), "Activites doesn't enabled");
+		Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-manage-partner/div/div[2]/div/div/nav/ul/li[3]")).isDisplayed(), "External Materials doesn't enabled");
+		System.out.println("Partner created successfully");
+	}
+	
+	//Method 2: Search Partner
+	public void search_partner() throws InterruptedException {
+		
+		//Coordinator Login
+		defaultSignIn.admin_login(Constant.newEmailId, Constant.newPassword);
+		
+		//Enter partner name in search field
+		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-partners/div/div[2]/div[2]/input")).sendKeys(Constant.newPartnerName);
+		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-partners/div/div[2]/div[2]/i[1]")).click();
+		
+		//Check partner name in partner list
+		Assert.assertFalse(driver.findElements(By.xpath("/html/body/app/main/pages/div/div/div/app-partners/div/div[3]/div/table/tbody")).contains(Constant.newPartnerName), "Partner doesn't found");
+		System.out.println("Partner name is present");
+	
+		//Navigate to edit partner page
+		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-partners/div/div[3]/div/table/tbody/tr[2]/td[3]/a/i")).click();
+		
 	}
 }

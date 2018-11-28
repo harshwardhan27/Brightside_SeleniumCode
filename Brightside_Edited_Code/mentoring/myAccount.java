@@ -1,9 +1,6 @@
 package mentoring;
-import utility.Constant;
-import utility.webDriverInstance;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import utility.*;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -13,11 +10,10 @@ public class myAccount extends webDriverInstance{
 	@Test(priority=5)
 	private void myAccountAvatar() throws InterruptedException{
 		try{
-			driver.findElement(By.linkText("Sign in")).click();
-			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[1]/div/input")).sendKeys(Constant.newEmailId);
-			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[2]/div/input")).sendKeys(Constant.newPassword);
-			driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[3]/input")).click();
-			Thread.sleep(3000);
+			//User login
+			defaultLogin.user_login(Constant.newEmailId, Constant.newPassword);
+
+			//Redirection to my account
 			driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[2]/a")).click();
 			Thread.sleep(3000);
 			String currentAccountURL = driver.getCurrentUrl();
