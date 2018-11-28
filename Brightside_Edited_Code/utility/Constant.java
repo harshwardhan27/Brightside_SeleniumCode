@@ -1,6 +1,6 @@
 package utility;
 
-public class Constant {
+public class constant {
 	
 //  Chrome Driver name and path
 	public static final String driverName = "chromeDriver";
@@ -11,23 +11,8 @@ public class Constant {
 //	public static final String driverName = "IEDriverServer";
 //	public static final String driverPath = "D:\\Selenium\\IEDriverServer.exe";
 //	public static final String driverPath = "C:\\Users\\HARSH\\workspace\\MySeleniumCode\\src\\org\\brightside\\IEDriverServer.exe";
-
-	//Constant URL
-	public static final String baseURL = "http://dev.angular.brightsidementoring.tudip.uk";
-	public static final String signUpURL = "http://dev.angular.brightsidementoring.tudip.uk/sign-up?project_code=";
-	public static final String feedsURL = "http://dev.angular.brightsidementoring.tudip.uk/feeds";
-	public static final String termsConditionURL = "http://dev.angular.brightsidementoring.tudip.uk/terms";
-	public static final String privacyPolicyURL = "http://dev.angular.brightsidementoring.tudip.uk/privacy";
-	public static final String existSignUpURL = "http://dev.angular.brightsidementoring.tudip.uk/sign-in?project_code=";
-	public static final String myAccountURL = "http://dev.angular.brightsidementoring.tudip.uk/users/718/edit";
-	public static final String myAssignmentURL = "http://dev.angular.brightsidementoring.tudip.uk/assignments";
-	public static final String myResourcesURL = "http://dev.angular.brightsidementoring.tudip.uk/project_resources";
-	public static final String myAskGraduateURL = "http://dev.angular.brightsidementoring.tudip.uk/ask_graduate";
-	public static final String myGraduateURL = "http://dev.angular.brightsidementoring.tudip.uk/graduates";
-	public static final String myCommunitiesURL = "http://dev.angular.brightsidementoring.tudip.uk/communities";
-	public static final String myAddThreadURL = "http://dev.angular.brightsidementoring.tudip.uk/add-thread";
 	
-	//Constant Default Variables
+	//Sign-up Variables
 	public static final String projectCode = "YKOKWG";
 	public static final String newfirstName = "Test";
 	public static final String newlastName = "User";
@@ -39,7 +24,6 @@ public class Constant {
 	public static final String newYear = "1994"; 
 	
 	//Messaging Constant Variables
-	public static final String messagingURL = "http://dev.angular.brightsidementoring.tudip.uk/channels";
 	public static final String testMessage = "Test Message";
 	
 	//MyAccount Constant Variables
@@ -72,12 +56,7 @@ public class Constant {
 	public static final String threadDescription = "Demo Thread Description";
 	public static final String successAddThreadMessage = "Thread added successfully";
 	
-	//Admin URL
-	public static final String adminURL = "http://dev.angular.brightsideadmin.tudip.uk/projects";
-	public static final String partnerURL = "http://dev.angular.brightsideadmin.tudip.uk/partners";
-	public static final String createPartnerURL = "http://dev.angular.brightsideadmin.tudip.uk/partners/new";
-	
-	//Partner Variables
+	//Admin - Partner Variables
 	public static final String newPartnerName = "Test Partner";
 	public static final String newPartnerDomain = "";
 	public static final String newPartnerCommunityDomain = "";
@@ -88,4 +67,11 @@ public class Constant {
 	public static final String newPartnerSecondaryColor = "";
 	public static final String logoFilePath = "";
 	public static final String backgroundImageFilePath = "";
+	
+	public static final boolean enableAssignments = true;
+	public static final boolean enableActivities = true;
+	public static final boolean enableExternalMaterial = true;
+	public static final boolean enableSurveys = true;
+	public static final boolean enableCoordinatorModeration = true;
+	public static final boolean enableAskTheGraduate = true;
 }

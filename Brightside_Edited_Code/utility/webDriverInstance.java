@@ -12,11 +12,11 @@ public class webDriverInstance {
 	@BeforeMethod
 	public void invokeBrowser(){
 		try {
-			if (Constant.driverName == "chromeDriver"){
-				System.setProperty("webdriver.chrome.driver",Constant.driverPath);
+			if (constant.driverName == "chromeDriver"){
+				System.setProperty("webdriver.chrome.driver",constant.driverPath);
 				driver = new ChromeDriver();
-			} else if (Constant.driverName == "IEDriverServer"){
-				System.setProperty("webdriver.ie.driver",Constant.driverPath);
+			} else if (constant.driverName == "IEDriverServer"){
+				System.setProperty("webdriver.ie.driver",constant.driverPath);
 				driver = new InternetExplorerDriver();
 			} else {
 				driver = new FirefoxDriver();
@@ -27,7 +27,7 @@ public class webDriverInstance {
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-			driver.get(Constant.baseURL);	
+			driver.get(constantURL.baseURL);	
 		} catch (Exception e) {
 			e.printStackTrace();
 		   }

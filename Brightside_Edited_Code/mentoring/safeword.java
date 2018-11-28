@@ -7,7 +7,7 @@ public class safeword extends webDriverInstance{
 	public void safeword_data() throws InterruptedException{
 	
 		//User Login
-		defaultLogin.user_login(Constant.newEmailId, Constant.newPassword);
+		defaultLogin.user_login(constant.newEmailId, constant.newPassword);
 		
 	    driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/feeds/div/div[1]/div/div[1]/a")).click();
 	    
