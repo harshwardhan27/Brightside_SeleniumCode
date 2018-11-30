@@ -3,14 +3,67 @@
 <suite name = "Brightside_Test_Run">
 	<test name = "FunctionalTesting">
 		<classes>
-			<class name="brightsideDefault.homePage"></class>
-			<class name="mentoring.messaging"></class>
-			<class name="mentoring.myAccount"></class>
-			<class name="mentoring.projectAssignments"></class>
-			<class name="mentoring.projectResources"></class>
-			<class name="mentoring.askTheGraduate"></class>
-			<class name="mentoring.projectCommunities"></class>
-			<class name="mentoring.safeword"></class>
+		
+		<!-- Mentee -->
+		
+			<class name="brightsideDefault.homePage">
+				<methods>
+        			<include name="sign_up" />
+        			<include name="alreadyAccount" />
+        			<include name="forgot_password" />
+        			<include name="forgot_password" />
+        			<include name="user_login" />
+      			</methods>
+      		</class>
+			<class name="mentoring.messaging">
+				<methods>
+        			<include name="mesaging" />
+      			</methods>
+      		</class>
+			<class name="mentoring.myAccount">
+				<methods>
+        			<include name="myAccountAvatar" />
+        			<include name="myAccoutUpdateDetails" />
+        			<include name="forgot_password" />
+        			<include name="forgot_password" />
+        			<include name="user_login" />
+      			</methods>
+      		</class>
+			<class name="mentoring.projectAssignments">
+				<methods>
+        			<include name="testUploadAssignments" />
+      			</methods>
+      		</class>
+			<class name="mentoring.projectResources">
+				<methods>
+        			<include name="assignedExternalMaterils" />
+      			</methods>
+			</class>	
+			<class name="mentoring.askTheGraduate">
+				<methods>
+        			<include name="myGraduates" />
+      			</methods>
+			</class>
+			<class name="mentoring.projectCommunities">
+				<methods>
+        			<include name="communities_topics" />
+      			</methods>
+			</class>
+			<class name="mentoring.safeword">
+				<methods>
+        			<include name="safeword_data" />
+      			</methods>
+			</class>
+		
+		<!-- Admin -->
+		
+			<class name="brightsideAdmin.modulePartner">
+				<methods>
+        			<include name="create_partner" />
+        			<include name="search_partner" />
+        			<include name="edit_partner"></include>
+      			</methods>
+      		</class>
 		</classes>
 	</test>
 </suite>

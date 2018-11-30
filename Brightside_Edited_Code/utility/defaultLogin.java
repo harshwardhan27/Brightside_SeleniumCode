@@ -1,5 +1,6 @@
 package utility;
 import org.openqa.selenium.*;
+import org.testng.Assert;
 
 public class defaultLogin extends webDriverInstance{
 	
@@ -19,5 +20,12 @@ public class defaultLogin extends webDriverInstance{
 		driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[2]/div/input")).sendKeys(admin_password);
 		driver.findElement(By.xpath("/html/body/app/main/sign-in/div/div/div/div/form/div[3]/input")).click();
 		Thread.sleep(3000);
+		
+		//Redirection to Admin Dashboard
+		driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[5]/a")).click();
+		Thread.sleep(5000);
+		String curentAdminURL = driver.getCurrentUrl();
+		Assert.assertEquals(curentAdminURL,constantURL.adminURL, "Admin URL doesn't matched");
+		System.out.println("Admin URL matched");
 	}
 }

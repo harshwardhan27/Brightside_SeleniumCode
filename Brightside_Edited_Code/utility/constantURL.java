@@ -16,7 +16,8 @@ public class constantURL {
 	public static final String myGraduateURL = "http://dev.angular.brightsidementoring.tudip.uk/graduates";
 	public static final String myCommunitiesURL = "http://dev.angular.brightsidementoring.tudip.uk/communities";
 	public static final String myAddThreadURL = "http://dev.angular.brightsidementoring.tudip.uk/add-thread";
-	public static final String messagingURL = "http://dev.angular.brightsidementoring.tudip.uk/channels";
+	public static final String myMessagingURL = "http://dev.angular.brightsidementoring.tudip.uk/channels";
+	public static final String myActivitiesURL = "http://dev.angular.brightsidementoring.tudip.uk/activities";
 	
 	//Admin URL's
 	public static final String adminURL = "http://dev.angular.brightsideadmin.tudip.uk/projects";

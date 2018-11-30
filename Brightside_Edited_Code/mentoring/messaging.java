@@ -1,23 +1,20 @@
 package mentoring;
 import utility.*;
 import org.openqa.selenium.*;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class messaging extends webDriverInstance{
 	  
-	   @Test(priority=4)
+	   @Test
 	   private void mesaging() throws InterruptedException{
 		try {
 			//User Login
 			defaultLogin.user_login(constant.newEmailId, constant.newPassword);
 
 			//Redirection to messaging
-			driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/feeds/div/div[1]/div/div[1]/a")).click();
-			Thread.sleep(3000);
-			String mentoringURL = driver.getCurrentUrl();
-			Assert.assertEquals(mentoringURL,constantURL.messagingURL, "Channels URL doesn't matched");
-			System.out.println("Channels URL matched");
+			modulesNavigation.messaging_navigation();
+			
+			//Sending Messages
 			driver.findElement(By.id("chat__input")).sendKeys(constant.testMessage);
 			WebElement textbox = driver.findElement(By.id("chat__input"));
 			textbox.sendKeys(Keys.SPACE);
@@ -34,7 +31,7 @@ public class messaging extends webDriverInstance{
 	  }	
 	  
 	  @AfterMethod
-	  public void browserClose(){
+	  public void tearDown(){
 		driver.close();
 	  }
 }

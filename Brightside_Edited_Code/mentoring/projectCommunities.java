@@ -2,21 +2,20 @@ package mentoring;
 import utility.*;
 import org.openqa.selenium.*;
 import org.testng.Assert;
+import org.testng.annotations.*;
 
 public class projectCommunities extends webDriverInstance{
 	
+	@Test
 	public void communities_topics(){
 		try{
 			//User Login
 			defaultLogin.user_login(constant.newEmailId, constant.newPassword);
 			
-			//Communities
-			driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[6]/a")).click();
-			Thread.sleep(3000);
-			String currentCommunitiesURL = driver.getCurrentUrl();
-			Assert.assertEquals(currentCommunitiesURL,constantURL.myCommunitiesURL, "Communities URL doesn't matched");
-			System.out.println("Communities URL matched");		
+			//Redirection to Communities
+			modulesNavigation.communities_navigation();		
 			
+			//Communities
 			driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/communities/div/div[2]/div/div[1]"));
 			Assert.assertTrue(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/communities/div/div[3]/div/viewtopics/div/div[2]/div[contains(text(),'No data found']")).isDisplayed());
 			System.out.println("Topics are present");
@@ -78,4 +77,9 @@ public class projectCommunities extends webDriverInstance{
 			e.printStackTrace();
 			}
 	}	
+	
+	@AfterMethod
+	public void tearDown(){
+		driver.close();
+	}
 }

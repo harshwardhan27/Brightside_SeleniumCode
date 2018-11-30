@@ -6,16 +6,16 @@ import org.testng.annotations.*;
 
 public class askTheGraduate extends webDriverInstance{
 
-	@Test(priority=10)
+	@Test
 	public void myGraduates() throws InterruptedException{
 		try{
 			//User Login
 			defaultLogin.user_login(constant.newEmailId, constant.newPassword);
 			
 			//Redirection to Ask the Graduate
-			driver.findElement(By.xpath("//*[@id='mySidenavR']/ul/li[3]/a")).click();
-			Thread.sleep(3000);
+			modulesNavigation.askTheGraduate_navigation();
 			
+			//Ask the Graduate
 			WebElement askGraduate_webElement = driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-ask-graduate/div/div[1]/ul/li[1]"));
 			WebElement graduate_webElement = driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-ask-graduate/div/div[1]/ul/li[2]"));
 			if (askGraduate_webElement.isDisplayed()){
@@ -46,7 +46,7 @@ public class askTheGraduate extends webDriverInstance{
 	}
 	
 	@AfterMethod
-	public void browserClose(){
+	public void tearDown(){
 		driver.close();
 	}
 }

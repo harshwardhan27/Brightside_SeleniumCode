@@ -7,19 +7,16 @@ import java.time.LocalDateTime;
 
 public class projectAssignments extends webDriverInstance{
 	
-	@Test(priority=7)
+	@Test
 	private void testUploadAssignments() throws InterruptedException{
 		try{
 			//User Login
 			defaultLogin.user_login(constant.newEmailId, constant.newPassword);
 			
-			//Upload Assignments
-			driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[2]/a")).click();
-			Thread.sleep(3000);
-			String currentAssignmentURL = driver.getCurrentUrl();
-			Assert.assertEquals(currentAssignmentURL,constantURL.myAssignmentURL, "Assignments URL doesn't matched");
-			System.out.println("Assignments URL matched");
+			//Redirection to Assignments
+			modulesNavigation.assignments_navigation();
 			
+			//Upload Assignments
 			WebElement wb_assignments = driver.findElement(By.id("//*[@id='mySidenavR']/ul/li[4]/a"));
 			wb_assignments.click();
 			driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/assignments/div/div/div[1]/div[2]/a")).sendKeys(constant.assignmentFilePath);
@@ -31,14 +28,7 @@ public class projectAssignments extends webDriverInstance{
 			String currentUploadConfirmMessage = uploadingMessage.getText();
 			Assert.assertEquals(currentUploadConfirmMessage,constant.uploadConfirmMessage, "User details doesn't updated successfully");
 			System.out.println(currentUploadConfirmMessage);
-		 } catch (Exception e) {
-				e.printStackTrace();
-				}
-	}	
-	
-	@Test(priority=8)
-	private void checkUploadFileName() throws InterruptedException{
-		try{
+			
 			//check uploaded date
 			LocalDateTime now = LocalDateTime.now();
 		    int year = now.getYear();
@@ -62,7 +52,7 @@ public class projectAssignments extends webDriverInstance{
 	}	
 	
 	@AfterMethod
-	public void browserClose(){
+	public void tearDown(){
 		driver.close();
 	}
 }

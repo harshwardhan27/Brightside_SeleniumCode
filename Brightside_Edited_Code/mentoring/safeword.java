@@ -1,9 +1,11 @@
 package mentoring;
 import org.openqa.selenium.*;
+import org.testng.annotations.*;
 import utility.*;
 
 public class safeword extends webDriverInstance{
 	
+	@Test
 	public void safeword_data() throws InterruptedException{
 	
 		//User Login
@@ -94,5 +96,10 @@ public class safeword extends webDriverInstance{
 		    driver.findElement(By.id("chat__send-message")).click();
 		    Thread.sleep(2000);
 	    }
+	}
+	
+	@AfterMethod
+	public void tearDown(){
+		driver.close();
 	}
 }

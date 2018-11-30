@@ -7,7 +7,7 @@ import org.testng.annotations.*;
 
 public class homePage extends webDriverInstance {
 	  
-	  @Test(priority=0)
+	  @Test
 	  private void sign_up() throws InterruptedException{
 		try {
 			driver.findElement(By.xpath("/html/body/app/main/home/mentoringhome/div/div/div/div[1]/div/div[3]/ul/li[1]/a")).click();
@@ -37,7 +37,7 @@ public class homePage extends webDriverInstance {
 			}
 	  }
 	  
-	  @Test(priority=1)
+	  @Test
 	  private void alreadyAccount() throws InterruptedException{
 		try {
 			driver.findElement(By.xpath("/html/body/app/main/home/mentoringhome/div/div/div/div[1]/div/div[3]/ul/li[1]/a")).click();
@@ -85,7 +85,7 @@ public class homePage extends webDriverInstance {
 			}
 	  }
 	  
-	  @Test(priority=2)
+	  @Test
 	  private void forgot_password(){
 		try {
 			driver.findElement(By.xpath("/html/body/app/main/home/mentoringhome/div/div/div/div[1]/div/div[3]/ul/li[2]/a")).click();
@@ -99,7 +99,7 @@ public class homePage extends webDriverInstance {
 		   }
 	  }
 	  
-	  @Test(priority=3)
+	  @Test
 	  private void user_login() throws InterruptedException{
 		try {
 			driver.findElement(By.xpath("/html/body/app/main/home/mentoringhome/div/div/div/div[1]/div/div[3]/ul/li[2]/a")).click();
@@ -116,8 +116,8 @@ public class homePage extends webDriverInstance {
 			}
 	  }
 	  
-	  @AfterMethod
-	  public void browserClose(){
+	@AfterMethod
+	public void tearDown(){
 		driver.close();
-	  }
+	}
 }

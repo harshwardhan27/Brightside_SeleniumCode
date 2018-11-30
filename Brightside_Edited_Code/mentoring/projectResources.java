@@ -6,19 +6,16 @@ import utility.*;
 
 public class projectResources extends webDriverInstance{
 	
-	@Test(priority=9)
+	@Test
 	public void assignedExternalMaterils() throws InterruptedException{
 		try {
 			//User Login
 			defaultLogin.user_login(constant.newEmailId, constant.newPassword);
 			
-			//Project Resources Test Cases
-			driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[5]/a")).click();
-			Thread.sleep(3000);
-			String currentResourcesURL = driver.getCurrentUrl();
-			Assert.assertEquals(currentResourcesURL,constantURL.myResourcesURL, "Resources URL doesn't matched");
-			System.out.println("Resources URL matched");
+			//Redirection to project resources
+			modulesNavigation.resources_navigation();
 			
+			//Project Resources
 			WebElement resources_div = driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/project-resources/div/div/div[2]/div[1]"));
 			Assert.assertFalse(resources_div.isDisplayed(), "External Materials are not assigned");
 			String materialLink;
@@ -36,10 +33,10 @@ public class projectResources extends webDriverInstance{
 		}
 	}
 	
-	 @AfterMethod
-	  public void browserClose(){
+	@AfterMethod
+	public void tearDown(){
 		driver.close();
-	  }
+	}
 }
 
 

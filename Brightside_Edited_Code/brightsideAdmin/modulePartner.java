@@ -1,32 +1,24 @@
 package brightsideAdmin;
 import org.openqa.selenium.*;
 import org.testng.Assert;
+import org.testng.annotations.*;
+
 import utility.*;
 
 public class modulePartner extends webDriverInstance{
-	
+
+	@Test
 	//Method 1: Create Partner
 	public void create_partner() throws InterruptedException{
 		
 		//Coordinator Login
 		defaultLogin.admin_login(constant.newEmailId, constant.newPassword);
 		
-		//Redirection to Admin Dashboard
-		driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[5]/a")).click();
-		Thread.sleep(5000);
-		String curentAdminURL = driver.getCurrentUrl();
-		Assert.assertEquals(curentAdminURL,constantURL.adminURL, "Admin URL doesn't matched");
-		System.out.println("Admin URL matched");
-		
 		//Redirection to Partner module
-		driver.findElement(By.xpath("/html/body/app/main/pages/div/left-side-menu/div/ul/li[1]/a")).click();
-		Thread.sleep(3000);
-		String curentPartnerURL = driver.getCurrentUrl();
-		Assert.assertEquals(curentPartnerURL,constantURL.partnerURL, "Partner URL doesn't matched");
-		System.out.println("Partner URL matched");
+		modulesNavigation.partners_navigation();
 		
 		//Redirection to Create Partner page
-		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-partners/div/div[2]/div[1]/a")).click();
+		modulesNavigation.createPartners_navigation();
 		
 		//Fill create partner fields
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-edit-partner/div/form/div[1]/div[1]/div[1]/input")).sendKeys(constant.newPartnerName);
@@ -76,16 +68,26 @@ public class modulePartner extends webDriverInstance{
 		//check partner title
 		Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-manage-partner/div/div[2]/div/div/app-partner-details/div/div[1]/div[2]/h4[contains(text()," + constant.newPartnerName + ")]")).isDisplayed(), "Partner Title doesn't matched");
 		Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-manage-partner/div/div[2]/div/div/app-partner-details/div/div[1]/div[2]/div[contains(text()," + constant.newPartnerTagline + ")]")).isDisplayed(), "Partner Description doesn't matched");		
-		Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-manage-partner/div/div[2]/div/div/nav/ul/li[2]")).isDisplayed(), "Activites doesn't enabled");
-		Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-manage-partner/div/div[2]/div/div/nav/ul/li[3]")).isDisplayed(), "External Materials doesn't enabled");
+	
+		if (constant.enableActivities == true){
+			Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-manage-partner/div/div[2]/div/div/nav/ul/li[2]")).isDisplayed(), "Activites doesn't enabled");
+		}
+		
+		if (constant.enableExternalMaterial == true){
+			Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-manage-partner/div/div[2]/div/div/nav/ul/li[3]")).isDisplayed(), "External Materials doesn't enabled");
+		}		
 		System.out.println("Partner created successfully");
 	}
 	
+	@Test
 	//Method 2: Search Partner
 	public void search_partner() throws InterruptedException {
 		
 		//Coordinator Login
 		defaultLogin.admin_login(constant.newEmailId, constant.newPassword);
+				
+		//Redirection to Partner module
+		modulesNavigation.partners_navigation();
 		
 		//Enter partner name in search field
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-partners/div/div[2]/div[2]/input")).sendKeys(constant.newPartnerName);
@@ -96,11 +98,14 @@ public class modulePartner extends webDriverInstance{
 		System.out.println("Partner name is present");
 	}
 
+	@Test
 	//Method 3: Edit Partner
 	@SuppressWarnings("unused")
 	public void edit_partner() throws InterruptedException {
 		
+		//To search partner
 		search_partner();
+		
 		//Navigate to edit partner page
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-partners/div/div[3]/div/table/tbody/tr[2]/td[3]/a/i")).click();
 		
@@ -160,5 +165,18 @@ public class modulePartner extends webDriverInstance{
 		}else{
 			Assert.assertFalse(!driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-edit-partner/div/form/div[3]/div[2]/div[6]")).isSelected());
 		}
+		
+		//Click Update button to update the partner details
+		driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/app-edit-partner/div/form/div[4]/input")).click();
+	}
+	
+	//Method 4: Partner Activities 
+	public void partner_activities(){
+		//TODO - Test Cases for Partner Activities
+	}
+	
+	@AfterMethod
+	public void tearDown(){
+		driver.close();
 	}
 }

@@ -7,18 +7,16 @@ import org.testng.annotations.*;
 
 public class myAccount extends webDriverInstance{
 	
-	@Test(priority=5)
+	@Test
 	private void myAccountAvatar() throws InterruptedException{
 		try{
 			//User login
 			defaultLogin.user_login(constant.newEmailId, constant.newPassword);
-
+			
 			//Redirection to my account
-			driver.findElement((By) By.xpath("//*[@id='mySidenavR']/ul/li[2]/a")).click();
-			Thread.sleep(3000);
-			String currentAccountURL = driver.getCurrentUrl();
-			Assert.assertEquals(currentAccountURL,constantURL.myAccountURL, "Already have an account URL doesn't matched");
-			System.out.println("Already have an account URL matched");
+			modulesNavigation.myAccount_navigation();
+			
+			//Avatar uploading
 			WebElement previousImg = driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/div/div[2]/img"));
 			String previousAvatar = previousImg.getAttribute("src");
 			driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/div/div[2]/span/i")).sendKeys(constant.imagefilePath);
@@ -36,9 +34,16 @@ public class myAccount extends webDriverInstance{
 			}
 	 }
 
-	@Test(priority=6)
+	@Test
 	private void myAccoutUpdateDetails() throws InterruptedException{
 		try{
+			
+			//User login
+			defaultLogin.user_login(constant.newEmailId, constant.newPassword);
+			
+			//Redirection to my account
+			modulesNavigation.myAccount_navigation();
+			
 			//Step-1
 			driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[1]/div/input")).clear();
 			Assert.assertFalse(driver.findElement(By.xpath("/html/body/app/main/pages/div/div/div/my-account/account-info/div/div[2]/div/form/div[7]/input")).isEnabled(), "First name field is cleared but update button remains enabled");
@@ -80,7 +85,7 @@ public class myAccount extends webDriverInstance{
 	  }	
 	
 	@AfterMethod
-	public void browserClose(){
+	public void tearDown(){
 		driver.close();
 	}
 }
