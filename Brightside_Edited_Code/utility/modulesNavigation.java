@@ -64,12 +64,13 @@ public class modulesNavigation extends webDriverInstance {
 	}
 	
 	//Admin: Partner
-	public static void partners_navigation() throws InterruptedException{
+	public static boolean partners_navigation() throws InterruptedException{
 		driver.findElement(By.xpath("/html/body/app/main/pages/div/left-side-menu/div/ul/li[1]/a")).click();
 		Thread.sleep(3000);
 		String curentPartnerURL = driver.getCurrentUrl();
 		Assert.assertEquals(curentPartnerURL,constantURL.partnerURL, "Partner URL doesn't matched");
 		System.out.println("Partner URL matched");
+		return true;
 	}
 
 	public static void createPartners_navigation() throws InterruptedException{
